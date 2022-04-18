@@ -20,7 +20,7 @@ Default.args = {
 };
 
 export const Pinned = Template.bind({});
-Pinnded.args = {
+Pinned.args = {
   task: {
     ...Default.args.task,
     state: 'TASK_PINNED'
