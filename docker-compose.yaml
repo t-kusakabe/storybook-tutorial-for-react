@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    container_name: node
+    command: npm run start
+    ports:
+      - 3000:3000
+      - 6006:6006
+    volumes:
+      - type: bind
+        source: .
+        target: /storybook-tutorial-for-react
+    # environment:
+    #   - NODE_OPTIONS=--openssl-legacy-provider
+    tty: true
+    stdin_open: true
