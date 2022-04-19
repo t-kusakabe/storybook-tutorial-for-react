@@ -40,16 +40,16 @@ export const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
         </div>
       </div>
     );
-
-    const tasksInOrder = [
-      ...tasks.filter((t) => t.state === 'TASK_PINNED'),
-      ...tasks.filter((t) => t.state !== 'TASK_PINNED')
-    ];
   }
+
+  const tasksInOrder = [
+    ...tasks.filter((t) => t.state === 'TASK_PINNED'),
+    ...tasks.filter((t) => t.state !== 'TASK_PINNED')
+  ];
 
   return (
     <div className="list-items">
-      {tasks.map((task) => (
+      {tasksInOrder.map((task) => (
         <Task key={task.id} task={task} {...events} />
       ))}
     </div>
