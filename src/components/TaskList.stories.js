@@ -4,7 +4,7 @@ import { TaskList } from './TaskList';
 import * as TaskStories from './Task.stories';
 
 export default {
-  components: TaskList,
+  component: TaskList,
   title: 'TaskList',
   decorators: [(story) => <div style={{ padding: '3rem' }}>{story()}</div>]
 }
@@ -32,7 +32,7 @@ WithPinnedTasks.args = {
 };
 
 export const Loading = Template.bind({});
-Loding.args = {
+Loading.args = {
   tasks: [],
   loading: true
 };
