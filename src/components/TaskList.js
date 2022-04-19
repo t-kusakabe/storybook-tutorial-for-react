@@ -2,7 +2,7 @@ import React from 'react';
 
 import Task from './Task';
 
-const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
+export const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
   const events = {
     onPinTask,
     onArchiveTask
