@@ -29,7 +29,7 @@ export const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) =
   );  
 };
 
-Task.prototype = {
+Task.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
