@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Task } from './Task';
 import { connect } from 'react-redux';
 import { archiveTask, pinTask } from '../lib/redux';
 
-export const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
+export const PureTaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
   const events = {
     onPinTask,
     onArchiveTask
@@ -52,10 +53,26 @@ export const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
   return (
     <div className="list-items">
       {tasksInOrder.map((task) => (
-        <Task key={task.id} task={task} {...events} />
+        <Task
+          key={task.id}
+          task={task}
+          onArchiveTask={(id) => archiveTask(id)}
+          onPinTask={(id) => pinTask(id)}
+        />
       ))}
     </div>
   );
+};
+
+PureTaskList.propTypes = {
+  loading: PropTypes.bool,
+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  onPinTask: PropTypes.func.isRequired,
+  onArchiveTask: PropTypes.func.isRequired
+};
+
+PureTaskList.defaultProps = {
+  loading: false
 };
 
 export default connect(
@@ -66,4 +83,4 @@ export default connect(
     onArchiveTask: (id) => dispatch(archiveTask(id)),
     onPinTask: (id) => dispatch(pinTask(id))
   })
-)(TaskList);
+)(PureTaskList);
